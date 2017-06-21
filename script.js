@@ -69,3 +69,28 @@ function handleMouseMove(event) {
 
     move(event.pageX, event.pageY);
 }
+
+function addRandomFox() {
+	var img = document.createElement("img");
+	
+	img.src = "fox.jpg";
+	img.width = 100;
+	img.height = 100;
+	img.style.left = Math.random() * window.innerWidth;
+	img.style.top = Math.random() * window.innerHeight;
+	
+	if (img.style.offsetLeft > window.innerWidth - img.width) img.style.left = window.innerWidth - img.width;
+	else if (img.style.offsetLeft < 0) img.style.left = 0;
+	if (img.style.offsetTop > window.innerHeight - img.height) img.style.top = window.innerHeight - img.height;
+	else if (img.style.offsetTop < 0) img.style.top = 0;
+	
+	img.style.position = "absolute";
+	
+	document.body.appendChild(img);
+}
+
+addRandomFox();
+addRandomFox();
+addRandomFox();
+addRandomFox();
+addRandomFox();
