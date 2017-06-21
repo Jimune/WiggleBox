@@ -46,6 +46,7 @@ function move(mouseX, mouseY) {
 		
 		if (foxInRange(ele, 75)) {
 			alert("You died...");
+			location.reload();
 		}
 	}
 }
