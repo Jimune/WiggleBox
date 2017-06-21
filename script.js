@@ -1,4 +1,5 @@
 var MOVE_SPEED = 10;
+var foxes = [];
 
 setInterval(function() {
 	if (Math.random() > 0.95) {
@@ -42,6 +43,10 @@ function move(mouseX, mouseY) {
 			if (ele.offsetTop - offsetY < 10) ele.style.top = 10;
 			else ele.style.top = ele.offsetTop - offsetY;
 		}
+		
+		if (foxInRange(ele, 75)) {
+			alert("You died...");
+		}
 	}
 }
 
@@ -70,25 +75,59 @@ function handleMouseMove(event) {
     move(event.pageX, event.pageY);
 }
 
+function foxInRange(ele, distance) {
+	var otherfox;
+	
+	for (otherfox in foxes) {
+		var otherx = foxes[otherfox].offsetLeft;
+		var othery = foxes[otherfox].offsetTop;
+		
+		var distx = otherx - ele.offsetLeft;
+		var disty = othery - ele.offsetTop;
+		
+		var range = Math.sqrt((distx * distx) + (disty * disty));
+		
+		if (range <= distance) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 function addRandomFox() {
 	var img = document.createElement("img");
+	
+	img.style.position = "absolute";
+	document.body.appendChild(img);
 	
 	img.src = "fox.jpg";
 	img.width = 100;
 	img.height = 100;
-	img.style.left = Math.random() * window.innerWidth;
-	img.style.top = Math.random() * window.innerHeight;
 	
-	if (img.style.offsetLeft > window.innerWidth - img.width) img.style.left = window.innerWidth - img.width;
-	else if (img.style.offsetLeft < 0) img.style.left = 0;
-	if (img.style.offsetTop > window.innerHeight - img.height) img.style.top = window.innerHeight - img.height;
-	else if (img.style.offsetTop < 0) img.style.top = 0;
+	do {
+		img.style.left = Math.random() * window.innerWidth;
+		img.style.top = Math.random() * window.innerHeight;
+		
+		do {
+			img.style.left = img.offsetLeft * 1.01;
+			img.style.top= img.offsetTop * 1.01;
+		} while (img.offsetLeft < 120 && img.offsetTop < 120);
+		
+		if (img.offsetLeft > window.innerWidth - img.width) img.style.left = window.innerWidth - img.width;
+		else if (img.offsetLeft < 0) img.style.left = 0;
+		if (img.offsetTop > window.innerHeight - img.height) img.style.top = window.innerHeight - img.height;
+		else if (img.offsetTop < 0) img.style.top = 0;
+	} while (foxInRange(img, 100));
 	
-	img.style.position = "absolute";
-	
-	document.body.appendChild(img);
+	foxes.push(img);
 }
 
+addRandomFox();
+addRandomFox();
+addRandomFox();
+addRandomFox();
+addRandomFox();
 addRandomFox();
 addRandomFox();
 addRandomFox();
