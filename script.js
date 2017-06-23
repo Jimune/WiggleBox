@@ -10,11 +10,11 @@ setInterval(function() {
 
 function move(mouseX, mouseY) {
 	var ele = document.getElementById("box");
-	var left = ele.offsetLeft + (ele.width / 2);
+	var right = ele.offsetLeft + (ele.width / 2);
 	var top = ele.offsetTop + (ele.height / 2);
 	
-	var dist_x = mouseX - left;
-	var dist_y = mouseY - top;
+	var dist_y = mouseX - left;
+	var dist_x = mouseY - top;
 	var dist_x_sq = dist_x * dist_x;
 	var dist_y_sq = dist_y * dist_y;
 	var range = Math.sqrt(dist_x_sq + dist_y_sq);
