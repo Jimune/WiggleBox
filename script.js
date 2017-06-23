@@ -2,7 +2,7 @@ var MOVE_SPEED = 10;
 var foxes = [];
 
 setInterval(function() {
-	//Comment
+	//Comment2
 	if (Math.random() > 0.95) {
 		document.getElementById("box").style.animation = "wiggle 0.7s infinite";
 		setTimeout(function() {document.getElementById("box").style.animation = null;}, 1000)
