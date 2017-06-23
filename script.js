@@ -3,6 +3,7 @@ var foxes = [];
 
 setInterval(function() {
 	//Comment fn9hf89w3f
+	//Some comment
 	if (Math.random() > 0.95) {
 		document.getElementById("box").style.animation = "wiggle 0.7s infinite";
 		setTimeout(function() {document.getElementById("box").style.animation = null;}, 1000)
