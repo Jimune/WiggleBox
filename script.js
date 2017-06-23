@@ -2,6 +2,7 @@ var MOVE_SPEED = 10;
 var foxes = [];
 
 setInterval(function() {
+	//Comment
 	if (Math.random() > 0.95) {
 		document.getElementById("box").style.animation = "wiggle 0.7s infinite";
 		setTimeout(function() {document.getElementById("box").style.animation = null;}, 1000)
@@ -124,13 +125,6 @@ function addRandomFox() {
 	foxes.push(img);
 }
 
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
-addRandomFox();
+for (var i = 0 ; i < 25; i++) {
+	addRandomFox();
+}
