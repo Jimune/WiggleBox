@@ -1,4 +1,4 @@
-var MOVE_SPEED = 10;
+var MOVE_SPEED = 10646363;
 var foxes = [];
 
 setInterval(function() {
